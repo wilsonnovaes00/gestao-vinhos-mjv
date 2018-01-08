@@ -1,4 +1,4 @@
-import { VinhoFiltro } from './vinho-filtro';
+import { VinhoFiltro } from './../../filters/vinho-filtro';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Vinho } from '../../models/vinho';

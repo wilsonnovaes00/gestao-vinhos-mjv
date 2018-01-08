@@ -13,7 +13,8 @@ import { CadastroVinhoComponent } from './components/cadastro-vinho/cadastro-vin
 import { DetalhesVinhosComponent } from './components/detalhes-vinhos/detalhes-vinhos.component';
 import { NotificacaoService } from './services/notificacao.service';
 import { NotificacaoComponent } from './components/notificacao/notificacao.component';
-import { VinhoFiltro } from './components/vinhos/vinho-filtro';
+
+import { VinhoFiltro } from './filters/vinho-filtro';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { VinhoFiltro } from './components/vinhos/vinho-filtro';
     InMemoryWebApiModule.forRoot(VinhoApi),
     AppRoutingModule
   ],
-  providers: [ VinhosService, NotificacaoService],
+  providers: [ VinhosService, NotificacaoService, VinhoFiltro],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
