@@ -46,12 +46,45 @@ export class VinhosComponent implements OnInit {
   }
 
   selecionarConjunto(id, check) : void{
-    if(!check){
+    let vinhos = document.getElementsByClassName("vinhoSelecionar");
+    let vinhosLen = vinhos.length;
+    let selectedAll = document.getElementById("selectAll"); 
+    selectedAll.checked = (this.vinhosSelecionados.length >= vinhosLen+1);
+    if(id < 0){
+      
+      if(!check){
+        this.vinhos.map((vinho) => this.vinhosSelecionados.push(vinho.id));
+        selectedAll.checked = true;
+
+        for(let i = 0; i < vinhosLen; i++){
+          vinhos[i].checked = true;
+          vinhos[i].value = true;
+
+        }
+      }else{
+
+        selectedAll.checked = false;
+
+
+        for(let i = 0; i < vinhosLen; i++){
+          vinhos[i].checked = false;
+          vinhos[i].value = false;
+
+        }
+
+        this.vinhosSelecionados = new Array();
+      }
+      return;
+    }
+
+    var index = this.vinhosSelecionados.indexOf(id);
+    if(!check && index < 0){
       this.vinhosSelecionados.push(id);
     }else{
-      var index = this.vinhosSelecionados.indexOf(id);
       this.vinhosSelecionados.splice(index,1);
     }
+
+    
   }
   remover(id: number): void {
     this.vinhosServices.remover(this.vinhoSelecionado.id)

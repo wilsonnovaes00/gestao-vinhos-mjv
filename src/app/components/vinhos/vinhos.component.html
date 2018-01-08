@@ -3,12 +3,10 @@
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 </form>
 
-<table class="table table-stripped table-hover">
+<table class="table table-stripped table-hover ">
   <thead>
     <tr>
-      <!-- TODO, Colocar opção de selecionar todos
-         <th><input type="checkbox" (click)="selecionarConjunto(-1, true)"></th>
-      -->
+      <th><input id='selectAll' type="checkbox"  [(ngModel)]="allSelected" (click)="selecionarConjunto(-1, allSelected)"></th>
       <th></th>
       <th>ID</th>
       <th>Nome</th>
@@ -22,7 +20,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let vinho of vinhos | filtroVinhoNome: search" (click)="selecionar(vinho)">
-      <td><input type="checkbox" [(ngModel)]="vinho.selected" [value]="false" (click)="selecionarConjunto(vinho.id, vinho.selected)"></td>
+      <td><input class="vinhoSelecionar" type="checkbox" [(ngModel)]="vinho.selected" [value]="false" (click)="selecionarConjunto(vinho.id, vinho.selected)"></td>
       <td>{{vinho.id}}</td>
       <td>{{vinho.nome}}</td>
       <td>{{vinho.classificacao}}</td>
@@ -42,7 +40,7 @@
 </div>
 
 <div *ngIf="(vinhosSelecionados.length > 0)" class="float-right">
-    <button class="btn btn-danger" (click)="removerItens()">  Excluir Todos os vinhos selecionado ({{vinhosSelecionados.length}}) </button>
+    <button class="btn btn-danger" (click)="removerItens()">  Excluir Todos os vinhos selecionados ({{vinhosSelecionados.length}}) </button>
   </div>
   
 
