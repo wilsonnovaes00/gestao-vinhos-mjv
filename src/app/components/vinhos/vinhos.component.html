@@ -8,10 +8,11 @@
       <th>Fabricante</th>
       <th>Ano de Safra</th>
       <th>Pais de Origem</th>
+      <th>Ação</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let vinho of vinhos">
+    <tr *ngFor="let vinho of vinhos" (click)="selecionar(vinho)">
       <td>{{vinho.id}}</td>
       <td>{{vinho.nome}}</td>
       <td>{{vinho.classificacao}}</td>
@@ -22,3 +23,9 @@
     </tr>
   </tbody>
 </table>
+
+<div *ngIf="vinhoSelecionado" class="float-right">
+  <button class="btn btn-primary" (click)="vizualizar()">  Vizualizar </button>
+  <button class="btn btn-warning" (click)="editar()">  Editar </button>
+  <button class="btn btn-danger" (click)="remover()">  Excluir </button>
+</div>
