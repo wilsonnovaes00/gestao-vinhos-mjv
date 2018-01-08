@@ -26,14 +26,14 @@ export class CadastroVinhoComponent implements OnInit {
 
   ngOnInit() {
     this.vinho = new Vinho();
-    this.uvas = ['Uva Verde', 'Amarela', 'Mauterino'];
-    this.classs = ['Bom', 'OTIMO', 'AGRADAVEL'];
+    this.uvas = ['Uva Verde', 'Amarela', 'Mauterino','Carmenere'];
+    this.classs = ['Bom', 'Otimo', 'Agradavel'];
     this.titulo = 'Cadastro de Vinho';
 
     this.rotaAtiva.params.forEach((params: Params) => {
       const id = +params['id'];
       if (id) {
-        this.titulo = 'Edição de  vinho';
+        this.titulo = 'Edição de vinho';
         this.carregarVinho(id);
       }
     });
