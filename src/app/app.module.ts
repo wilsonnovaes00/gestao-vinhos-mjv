@@ -13,6 +13,7 @@ import { CadastroVinhoComponent } from './components/cadastro-vinho/cadastro-vin
 import { DetalhesVinhosComponent } from './components/detalhes-vinhos/detalhes-vinhos.component';
 import { NotificacaoService } from './services/notificacao.service';
 import { NotificacaoComponent } from './components/notificacao/notificacao.component';
+import { VinhoFiltro } from './components/vinhos/vinho-filtro';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NotificacaoComponent } from './components/notificacao/notificacao.compo
     VinhosComponent,
     CadastroVinhoComponent,
     DetalhesVinhosComponent,
-    NotificacaoComponent
+    NotificacaoComponent,
+    VinhoFiltro
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import { NotificacaoComponent } from './components/notificacao/notificacao.compo
     InMemoryWebApiModule.forRoot(VinhoApi),
     AppRoutingModule
   ],
-  providers: [ VinhosService, NotificacaoService ],
+  providers: [ VinhosService, NotificacaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

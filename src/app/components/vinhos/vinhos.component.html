@@ -1,3 +1,8 @@
+<form class="form-inline my-2 my-lg-0 float-right" (submit)="procurar()">
+  <input class="form-control mr-sm-2" type="text" placeholder="Search" name="vinhoSearch" [(ngModel)]="vinhoSearch">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
 <table class="table table-stripped table-hover">
   <thead>
     <tr>
@@ -8,11 +13,11 @@
       <th>Fabricante</th>
       <th>Ano de Safra</th>
       <th>Pais de Origem</th>
-      <th>Ação</th>
+     <!-- <th>Ação</th>  -->
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let vinho of vinhos" (click)="selecionar(vinho)">
+    <tr *ngFor="let vinho of vinhos | filtroVinhoNome: search" (click)="selecionar(vinho)">
       <td>{{vinho.id}}</td>
       <td>{{vinho.nome}}</td>
       <td>{{vinho.classificacao}}</td>

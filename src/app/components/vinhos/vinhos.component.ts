@@ -1,3 +1,4 @@
+import { VinhoFiltro } from './vinho-filtro';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Vinho } from '../../models/vinho';
@@ -11,10 +12,11 @@ import { VinhosService } from '../../services/vinhos.service';
 export class VinhosComponent implements OnInit {
 
   vinhos: Array<Vinho>;
-
+  search: string;
+  vinhoSearch: string;
   vinhoSelecionado: Vinho;
 
-  constructor(public vinhosServices: VinhosService, private router: Router) { }
+  constructor(public vinhosServices: VinhosService, private router: Router, private filter: VinhoFiltro){}
 
   ngOnInit() {
     this.listar();
@@ -33,6 +35,10 @@ export class VinhosComponent implements OnInit {
   }
   editar(): void {
     this.router.navigate(['/cadastro-vinho', this.vinhoSelecionado.id]);
+  }
+
+  procurar() : void{
+    this.search = this.vinhoSearch;
   }
 
   remover(id: number): void {
