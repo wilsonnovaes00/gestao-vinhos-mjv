@@ -15,6 +15,9 @@ import { NotificacaoService } from './services/notificacao.service';
 import { NotificacaoComponent } from './components/notificacao/notificacao.component';
 
 import { VinhoFiltro } from './filters/vinho-filtro';
+// Modulos MAterial 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 
 @NgModule({
@@ -31,7 +34,11 @@ import { VinhoFiltro } from './filters/vinho-filtro';
     HttpModule,
     FormsModule,
     InMemoryWebApiModule.forRoot(VinhoApi),
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,  // Inicio de modulos Material 
+    MatButtonModule,
+    MatCheckboxModule
+    
   ],
   providers: [ VinhosService, NotificacaoService, VinhoFiltro],
   bootstrap: [AppComponent]
