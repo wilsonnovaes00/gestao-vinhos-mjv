@@ -1,6 +1,5 @@
-import { Vinho } from './../../models/vinho';
-import { Pipe } from "@angular/core";
-import { PipeTransform } from "@angular/core/src/change_detection/pipe_transform";
+import { Vinho } from './../models/vinho';
+import { Pipe,PipeTransform } from "@angular/core";
 
 @Pipe({
     name: 'filtroVinhoNome'

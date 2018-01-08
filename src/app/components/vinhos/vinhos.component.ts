@@ -15,11 +15,15 @@ export class VinhosComponent implements OnInit {
   search: string;
   vinhoSearch: string;
   vinhoSelecionado: Vinho;
+  vinhosSelecionados: Array<number>;
 
-  constructor(public vinhosServices: VinhosService, private router: Router, private filter: VinhoFiltro){}
+  constructor(public vinhosServices: VinhosService, private router: Router, private filter: VinhoFiltro){
+    this.vinhosSelecionados = new Array();
+  }
 
   ngOnInit() {
     this.listar();
+    console.log(this.vinhosSelecionados.length);
   }
   private listar() {
     this.vinhosServices.listar()
@@ -41,9 +45,27 @@ export class VinhosComponent implements OnInit {
     this.search = this.vinhoSearch;
   }
 
+  selecionarConjunto(id, check) : void{
+    if(!check){
+      this.vinhosSelecionados.push(id);
+    }else{
+      var index = this.vinhosSelecionados.indexOf(id);
+      this.vinhosSelecionados.splice(index,1);
+    }
+  }
   remover(id: number): void {
     this.vinhosServices.remover(this.vinhoSelecionado.id)
     .subscribe();
     this.listar();
+  }
+
+  async removerItens(){
+    await this.vinhosSelecionados.forEach(id => {
+      this.vinhosServices.remover(id).subscribe();
+    });
+    
+    this.listar();
+    this.vinhosSelecionados = new Array();
+    this.vinhoSelecionado = null;
   }
 }
