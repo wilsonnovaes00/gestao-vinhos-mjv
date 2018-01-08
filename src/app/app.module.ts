@@ -14,6 +14,10 @@ import { DetalhesVinhosComponent } from './components/detalhes-vinhos/detalhes-v
 import { NotificacaoService } from './services/notificacao.service';
 import { NotificacaoComponent } from './components/notificacao/notificacao.component';
 
+// Modulos MAterial 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { NotificacaoComponent } from './components/notificacao/notificacao.compo
     HttpModule,
     FormsModule,
     InMemoryWebApiModule.forRoot(VinhoApi),
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,  // Inicio de modulos Material 
+    MatButtonModule,
+    MatCheckboxModule
+    
   ],
   providers: [ VinhosService, NotificacaoService ],
   bootstrap: [AppComponent]
